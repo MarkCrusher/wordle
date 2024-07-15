@@ -5,7 +5,7 @@ import random
 # To Do:
 # check if words exist before accepting user input
 # Make it case insensitive {done}
-# Display capital when correct, lower case when correct but wrong spot, and * when wrong.
+# Display capital when correct, lower case when correct but wrong spot, and * when wrong. DONE
 # Display list of already tried letters
 
 
@@ -15,6 +15,7 @@ def getWordFromFile() -> str:
     # Using readlines()
     file1 = open('words.txt', 'r')
     Lines = file1.readlines()
+    file1.close()
 
     count = 0
     # Strips the newline character
@@ -24,6 +25,24 @@ def getWordFromFile() -> str:
     word = line[0:5]
     # Returns in lower case.
     return word.upper()
+
+def checkRealWord(wordToCheck: str) -> bool:
+    # Using readlines()
+    file1 = open('words.txt', 'r')
+    Lines = file1.readlines()
+    file1.close()
+
+    lineNum: int = 0
+    while lineNum < len(Lines):
+        line = Lines[lineNum]
+        # Limit the word to 5 charaters
+        word = line[0:5].upper()
+        if wordToCheck == word:
+            return True
+        lineNum = lineNum + 1
+    return False
+    
+
 
 def main() -> None:
     attempts = 0
@@ -40,6 +59,9 @@ def main() -> None:
             if len(guess) != 5:
                 badInput = True
                 print("Please enter a 5 letter word")
+            elif not checkRealWord(guess): 
+                 badInput = True
+                 print("That word doesnt exist")
             else:
                 badInput = False
 
@@ -67,7 +89,7 @@ def main() -> None:
             if isMatch:
                 output = output + guessChar
             elif isThere:
-                output = output + "+"
+                output = output + guessChar.lower()
             else:
                 output = output + "-"
 
