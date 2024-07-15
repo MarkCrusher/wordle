@@ -3,7 +3,8 @@
 import random
 
 # To Do:
-# Display list of already tried letters 
+# Display list of already tried letters
+# Add a way to quit the game
 
 
 
@@ -43,7 +44,6 @@ def checkRealWord(wordToCheck: str) -> bool:
 
 def main() -> None:
     attempts = 0
-    # word = "fante"
     word = getWordFromFile()
     print("!!! word to guess is " + word)
 
