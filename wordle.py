@@ -2,6 +2,12 @@
 
 import random
 
+# To Do:
+# check if words exist before accepting user input
+# Make it case insensitive
+# Display capital when correct, lower case when correct but wrong spot, and * when wrong.
+# Display list of already tried letters
+
 
 def getWordFromFile() -> str:
     # Using readlines()
