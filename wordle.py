@@ -5,6 +5,7 @@ import random
 # To Do:
 # Display list of already tried letters
 # Add a way to quit the game
+# The user should loose after 5 valid failed attemps and the secret word should be revealed
 
 
 
