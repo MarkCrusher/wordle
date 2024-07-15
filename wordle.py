@@ -4,9 +4,11 @@ import random
 
 # To Do:
 # check if words exist before accepting user input
-# Make it case insensitive
+# Make it case insensitive {done}
 # Display capital when correct, lower case when correct but wrong spot, and * when wrong.
 # Display list of already tried letters
+
+
 
 
 def getWordFromFile() -> str:
@@ -18,7 +20,10 @@ def getWordFromFile() -> str:
     # Strips the newline character
     randomIndex = random.randint(0, len(Lines)-1)
     line = Lines[randomIndex]
-    return line[0:5]
+    # Limit the word to 5 charaters
+    word = line[0:5]
+    # Returns in lower case.
+    return word.upper()
 
 def main() -> None:
     attempts = 0
@@ -31,6 +36,7 @@ def main() -> None:
         badInput = True
         while badInput:
             guess = input("Enter your 5 letter guess: \n")
+            guess = guess.upper()
             if len(guess) != 5:
                 badInput = True
                 print("Please enter a 5 letter word")
